@@ -1,6 +1,6 @@
 namespace Networking
 {
-    public interface INetworkRunnerService
+    public interface INetworkRunner
     {
         bool IsConnected { get; }
         void Init();

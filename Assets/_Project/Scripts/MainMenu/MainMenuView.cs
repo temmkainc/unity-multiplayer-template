@@ -1,26 +1,29 @@
 using Zenject;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenuView : MonoBehaviour
 {
-    private MainMenuController _mainMenuController;
+    [SerializeField] private Button _hostButton;
+    [SerializeField] private Button _joinButton;
+
+    private MainMenuController _controller;
 
     [Inject]
     public void Construct(MainMenuController controller)
     {
-        _mainMenuController = controller;
+        _controller = controller;
     }
 
-    private void OnGUI()
+    private void Awake()
     {
-        if (GUI.Button(new Rect(10, 10, 200, 40), "Host"))
-        {
-            _mainMenuController?.OnHostButtonClicked();
-        }
+        _hostButton.onClick.AddListener(_controller.OnHostButtonClicked);
+        _joinButton.onClick.AddListener(_controller.OnJoinButtonClicked);
+    }
 
-        if (GUI.Button(new Rect(10, 60, 200, 40), "Join"))
-        {
-            _mainMenuController?.OnJoinButtonClicked();
-        }
+    private void OnDestroy()
+    {
+        _hostButton.onClick.RemoveListener(_controller.OnHostButtonClicked);
+        _joinButton.onClick.RemoveListener(_controller.OnJoinButtonClicked);
     }
 }

@@ -11,7 +11,7 @@ namespace Core
         public bool UseFusion = true;
 
         [Header("NetworkRunner Prefab (optional)")]
-        public NetworkRunnerService NetworkRunnerPrefab;
+        public NetworkRunner NetworkRunnerPrefab;
 
         public override void InstallBindings()
         {
@@ -30,7 +30,7 @@ namespace Core
 
             if (UseFusion && NetworkRunnerPrefab != null)
             {
-                Container.Bind<INetworkRunnerService>()
+                Container.Bind<INetworkRunner>()
                          .FromComponentInNewPrefab(NetworkRunnerPrefab)
                          .AsSingle()
                          .NonLazy();

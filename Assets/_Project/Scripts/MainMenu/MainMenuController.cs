@@ -3,21 +3,21 @@ using Zenject;
 
 public class MainMenuController
 {
-    [Inject] private INetworkRunnerService _networkService;
+    [Inject] private INetworkRunner _networkRunner;
 
     public void OnHostButtonClicked()
     {
-        if (_networkService != null)
+        if (_networkRunner != null)
         {
-            _networkService.Host("MyRoom");
+            _networkRunner.Host("MyRoom");
         }
     }
 
     public void OnJoinButtonClicked()
     {
-        if (_networkService != null)
+        if (_networkRunner != null)
         {
-            _networkService.Join("MyRoom");
+            _networkRunner.Join("MyRoom");
         }
     }
 }

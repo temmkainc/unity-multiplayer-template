@@ -11,7 +11,7 @@ namespace Core
     {
         [Inject] private GameSettings _gameSettings;
         [Inject] private IPlatformService _platformService;
-        [Inject] private INetworkRunnerService _networkService;
+        [Inject] private INetworkRunner _networkService;
 
 
         [Inject]
